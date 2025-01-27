@@ -21,5 +21,15 @@
 # a=[[1,2,3],["nbamit","asf"],4,True]
 
 
+def sum(a,b):
+    return a+b
 
+def name():
+    return "Amit"
+
+
+
+if __name__ == "__main__":
+    print(sum(3,4))
+    print(name())
 
