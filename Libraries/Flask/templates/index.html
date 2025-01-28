@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative HTML Calculator</title>
+    <style>
+        /* Set background image */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://images.unsplash.com/photo-1506820017589-15d124767c47') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Center content using flexbox */
+        .calculator-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .calculator {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+        }
+
+        label, select, input {
+            font-size: 18px;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            border: 2px solid #ccc;
+            width: 80%;
+        }
+
+        select {
+            width: 85%;
+        }
+
+        button {
+            font-size: 20px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .result {
+            font-size: 24px;
+            margin-top: 20px;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator-container">
+        <div class="calculator">
+            <h1>Basic Calculator</h1>
+            <form id="calculatorForm" onsubmit="calculate(event)">
+                <label for="num1">Number 1:</label>
+                <input type="text" id="num1" name="num1" placeholder="Enter first number"><br><br>
+
+                <label for="num2">Number 2:</label>
+                <input type="text" id="num2" name="num2" placeholder="Enter second number"><br><br>
+
+                <label for="operation">Operation:</label>
+                <select id="operation" name="operation">
+                    <option value="add">Addition (+)</option>
+                    <option value="subtract">Subtraction (-)</option>
+                    <option value="multiply">Multiplication (*)</option>
+                    <option value="divide">Division (/)</option>
+                </select><br><br>
+
+                <button type="submit">Calculate</button>
+            </form>
+            <div class="result">
+                Result: <span id="result">N/A</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function calculate(event) {
+            event.preventDefault(); // Prevent the form from refreshing the page
+
+            const num1 = parseFloat(document.getElementById("num1").value);
+            const num2 = parseFloat(document.getElementById("num2").value);
+            const operation = document.getElementById("operation").value;
+            let result;
+
+            if (isNaN(num1) || isNaN(num2)) {
+                result = "Please enter valid numbers.";
+            } else {
+                switch (operation) {
+                    case "add":
+                        result = num1 + num2;
+                        break;
+                    case "subtract":
+                        result = num1 - num2;
+                        break;
+                    case "multiply":
+                        result = num1 * num2;
+                        break;
+                    case "divide":
+                        result = num2 !== 0 ? (num1 / num2) : "Cannot divide by zero.";
+                        break;
+                    default:
+                        result = "Invalid operation.";
+                }
+            }
+
+            // Display the result
+            document.getElementById("result").textContent = result;
+        }
+    </script>
+</body>
+</html>

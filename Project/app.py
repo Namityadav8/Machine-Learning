@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the pre-trained model
-model = joblib.load(r"C:\Academics\Machine-Learning\Project\heart_disease_prediction_model.pkl")
+model = joblib.load("Project\heart_disease_prediction_model.pkl")
 
 
 
